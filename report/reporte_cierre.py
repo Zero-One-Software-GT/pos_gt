@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import api, models
-
+import logging
 class ReporteCierre(models.AbstractModel):
     _name = 'report.pos_gt.reporte_cierre'
 
@@ -59,7 +59,7 @@ class ReporteCierre(models.AbstractModel):
     def _get_report_values(self, docids, data=None):
         model = 'pos.session'
         docs = self.env[model].browse(docids)
-
+        logging.warning("VALUES {0}".format(self.env))
         return {
             'doc_ids': self.ids,
             'doc_model': model,
